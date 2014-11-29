@@ -24,6 +24,11 @@ class Translation
         $this->translation = $translation;
     }
 
+    /**
+     * @param Translation $translation
+     *
+     * @return boolean
+     */
     public function equals(Translation $translation)
     {
         if ($this->word == $translation->word && $this->translation == $translation->translation) {
