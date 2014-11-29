@@ -1,0 +1,25 @@
+{
+    "require": {
+        "php": ">=5.4.0",
+        "doctrine/migrations": "~1.0@dev",
+        "symfony/console": "~2.5",
+        "drush/drush": "7.*@dev",
+        "symfony/dependency-injection": "~2.5"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.1.0rc1",
+        "bossa/phpspec2-expect": "*",
+        "behat/behat": "~3.0",
+        "sensiolabs/behat-page-object-extension": "~2.0@dev",
+        "behat/mink-extension": "*",
+        "behat/mink-selenium2-driver": "*",
+        "behat/mink-goutte-driver": "1.0.*",
+        "ocramius/proxy-manager": "~0.5",
+        "phpunit/phpunit": "3.7.*",
+        "fabpot/php-cs-fixer": "~0.3@dev"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {"psr-0": {"": "src"}}
+}
