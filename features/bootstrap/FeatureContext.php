@@ -30,6 +30,14 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
+     * @BeforeScenario
+     */
+    public function spinUp()
+    {
+        $this->dictionary = new Dictionary();
+    }
+
+    /**
      * @Transform :word
      * @Transform :translation
      *
@@ -40,6 +48,18 @@ class FeatureContext implements Context, SnippetAcceptingContext
     public function castStringToWord($string)
     {
         return new Word($string);
+    }
+
+    /**
+     * @Transform :count
+     *
+     * @param string $string
+     *
+     * @return integer
+     */
+    public function castStringToInteger($string)
+    {
+        return (int)$string;
     }
 
     /**
@@ -78,34 +98,27 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given the word :trans with translation :arg2 has been added to the dictionary
+     * @Given the word :word with translation :translation has been added to the dictionary
      */
-    public function theWordWithTranslationHasBeenAddedToTheDictionary($arg1, $arg2)
+    public function theWordWithTranslationHasBeenAddedToTheDictionary(Word $word, Word $translation)
+    {
+        $this->dictionary->addTranslation(new Translation($word, $translation));
+    }
+
+    /**
+     * @Then I should see a notification that the word :word already exists in the dictionary
+     */
+    public function iShouldSeeANotificationThatTheWordAlreadyExistsInTheDictionary(Word $word)
     {
         throw new PendingException();
     }
 
     /**
-     * @When I look up :arg1 in the dictionary
+     * @Then I should see the word :word with :count translations in the dictionary
      */
-    public function iLookUpInTheDictionary($arg1)
+    public function iShouldSeeTheWordWithTwoTranslationsInTheDictionary(Word $word, $count)
     {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then I should see a notification that the word :arg1 already exists in the dictionary
-     */
-    public function iShouldSeeANotificationThatTheWordAlreadyExistsInTheDictionary($arg1)
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then I should see the word :arg1 with two translations in the dictionary
-     */
-    public function iShouldSeeTheWordWithTwoTranslationsInTheDictionary($arg1)
-    {
-        throw new PendingException();
+        expect($this->searchResult)->toBeForWord($word);
+        expect($this->searchResult->getNumberOfTranslations())->toBe($count);
     }
 }

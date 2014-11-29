@@ -28,4 +28,5 @@ Feature: A learner can see a dictionary
   Scenario: Learner can add a new translation to the existing word in the dictionary
     Given the word "ciao" with translation "hello" has been added to the dictionary
     When I add the new word "ciao" with a translation "goodbye"
-    Then I should see the word "ciao" with two translations in the dictionary
+    And I search for word "ciao" in the dictionary
+    Then I should see the word "ciao" with 2 translations in the dictionary

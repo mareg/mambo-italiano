@@ -37,4 +37,18 @@ class Translation
 
         return false;
     }
+
+    /**
+     * @param Word $word
+     * 
+     * @return boolean
+     */
+    public function isForWord(Word $word)
+    {
+        if ($word->equals($this->word)) {
+            return true;
+        }
+
+        return false;
+    }
 }

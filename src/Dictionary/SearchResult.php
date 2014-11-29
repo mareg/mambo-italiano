@@ -49,4 +49,12 @@ class SearchResult
 
         return false;
     }
+
+    /**
+     * @return integer
+     */
+    public function getNumberOfTranslations()
+    {
+        return count($this->translations);
+    }
 }

@@ -34,6 +34,13 @@ class Dictionary
      */
     public function searchForWord(Word $word)
     {
-        return new SearchResult($word, [$this->translations[0]]);
+        $results = [];
+        foreach ($this->translations as $translation) {
+            if ($translation->isForWord($word)) {
+                $results[] = $translation;
+            }
+        }
+
+        return new SearchResult($word, $results);
     }
 }
