@@ -3,7 +3,6 @@
 namespace spec\Dictionary;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 use Dictionary\Word;
 use Dictionary\Translation;

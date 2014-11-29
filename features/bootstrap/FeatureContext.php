@@ -3,8 +3,6 @@
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
 
 use Dictionary\Word;
 use Dictionary\Dictionary;
@@ -34,7 +32,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     /**
      * @Transform :word
      * @Transform :translation
-     * 
+     *
      * @param string $string
      *
      * @return Word
