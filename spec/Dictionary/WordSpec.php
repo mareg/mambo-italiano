@@ -13,9 +13,13 @@ class WordSpec extends ObjectBehavior
         $this->beConstructedWith('ciao');
     }
 
-    function it_can_tell_if_it_equals_to_another_word()
+    function it_returns_true_if_it_equals_another_word()
     {
         $this->equals(new Word('ciao'))->shouldReturn(true);
+    }
+
+    function it_returns_false_if_it_does_not_equal_another_word()
+    {
         $this->equals(new Word('bello'))->shouldReturn(false);
     }
 

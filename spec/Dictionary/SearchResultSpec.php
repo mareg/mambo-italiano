@@ -19,16 +19,33 @@ class SearchResultSpec extends ObjectBehavior
         $this->beConstructedWith($word, $translations);
     }
 
-    function it_can_tell_if_it_is_for_word()
+    function it_returns_true_if_is_for_word_ciao()
     {
         $this->isForWord(new Word('ciao'))->shouldReturn(true);
+    }
+
+    function it_returns_false_if_is_not_for_word_ciao()
+    {
         $this->isForWord(new Word('bello'))->shouldReturn(false);
     }
 
-    function it_can_tell_if_it_has_a_translation()
+    function it_returns_true_if_it_has_translation()
     {
         $this->hasTranslation(new Translation(new Word('ciao'), new Word('hello')))->shouldReturn(true);
+    }
+
+    function it_returns_false_if_it_does_not_have_translation()
+    {
         $this->hasTranslation(new Translation(new Word('ciao'), new Word('goodbye')))->shouldReturn(false);
+    }
+
+    function it_returns_0_if_has_no_translations_of_given_word()
+    {
+        $word = new Word('ciao');
+
+        $this->beConstructedWith($word, []);
+
+        $this->getNumberOfTranslations()->shouldReturn(0);
     }
 
     function it_returns_1_for_1_translation_for_given_word()
